@@ -1,0 +1,47 @@
+#include <iostream>
+#include <graphics.h>
+
+void drawCircle(int x_center, int y_center, int radius) {
+    int x = radius;
+    int y = 0;
+    int p = 1 - radius; // Initial decision parameter
+
+    while (x >= y) {
+        putpixel(x_center + x, y_center - y, WHITE);
+        putpixel(x_center - x, y_center - y, WHITE);
+        putpixel(x_center + y, y_center + x, WHITE);
+        putpixel(x_center - y, y_center + x, WHITE);
+
+        putpixel(x_center + y, y_center - x, WHITE);
+        putpixel(x_center - y, y_center - x, WHITE);
+        putpixel(x_center + x, y_center + y, WHITE);
+        putpixel(x_center - x, y_center + y, WHITE);
+
+        y++;
+
+        // Mid-point is inside or on the perimeter
+        if (p <= 0)
+            p = p + 2*y + 1;
+        // Mid-point is outside the perimeter
+        else {
+            x--;
+            p = p + 2*y - 2*x + 1;
+        }
+    }
+}
+
+int main() {
+    int gd = DETECT, gm;
+    initgraph(&gd, &gm, NULL);
+
+    int x_center = getmaxx() / 2;
+    int y_center = getmaxy() / 2;
+    int radius = 100;
+
+    drawCircle(x_center, y_center, radius);
+
+    delay(5000);
+    closegraph();
+
+    return 0;
+}

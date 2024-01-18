@@ -1,0 +1,24 @@
+#include <iostream.h>
+#include <graphics.h>
+#include <conio.h>
+#include <dos.h>
+#include <stdlib.h>
+
+void main()
+{
+    clrscr();
+    int gd = DETECT, gm;
+    initgraph(&gd, &gm, "c:/TURBOC3/BGI");
+    int i;
+    for (i = 1; i <= 10; i++)
+    {
+
+        int x = rand() % getmaxx();
+        int y = rand() % getmaxy();
+        int r = rand() % i * 50;
+        delay(1000);
+        circle(x, y, r);
+    }
+
+    getch();
+}

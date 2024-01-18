@@ -1,0 +1,26 @@
+#include <conio.h>
+#include <iostream.h>
+#include <graphics.h>
+#include <dos.h>
+
+void main() {
+int gd = DETECT,gm;
+initgraph(&gd,&gm,"c:/TURBOC3/BGI");
+int i ,x ,y ;
+x = getmaxx()/2;
+y = getmaxy()/2;
+
+setfillstyle(SOLID_FILL,WHITE);
+setcolor(WHITE);
+
+for (i=1 ;i<=20;i++){
+setfillstyle(i,i);
+delay(1000);
+circle(x,y,i*10);
+floodfill(x-2+i*10,y,WHITE);
+}
+closegraph();
+getch();
+
+}
+

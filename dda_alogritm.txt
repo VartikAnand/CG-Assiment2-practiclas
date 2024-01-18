@@ -1,0 +1,39 @@
+
+#include <conio.h>
+#include <iostream.h>
+#include <graphics.h>
+#include <math.h>
+#include <stdlib.h>
+void main(){
+int gd=DETECT,gm;
+initgraph(&gd,&gm,"c:/TURBOC3/BGI");
+int x1,x2,y1,y2,i,step,dex,dey;
+cout<<"Enter Point P1"<<endl;
+cout<<"Enter x1 for Point 1 :"<<endl;
+cin>>x1;
+cout<<"Enter y1 for Point p1 "<<endl;
+cin>>y1;
+cout<< " enter point p2"<<endl;
+cout<<"enter x2 for p2"<<endl;
+cin>>x2;
+cout<<"enter y2 for p2"<<endl;
+cin>>y2;
+dex = x2-x1;
+dey=y2-y1;
+if((dex)>(dey)){
+step= abs(dex);
+}
+else{
+step=abs(dex);
+}
+putpixel(x1,y1,RED);
+xinc= dex/(float)step;
+yinc=dey/(float)step;
+for(i=0;i<step;i++){
+x1=x1+xinc;
+y1=y1+yinc;
+putpixel(x1,y1,RED);
+}
+getch();
+clrscr();
+}
